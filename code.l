@@ -18,30 +18,30 @@
 %%
 
 [ \t] ; 
-\n	{return nl;}
-print return print;
-while return whl;
-for return fr;
-if return f;
-else return els;
-in return in;
-len return length;
-"<=" return LE;
-">=" return GE;
-"==" return EE;
-"!=" return NE;
-"->" return RA;
-"<-" return LA;
-":" return colon;
-range return rangeo;
-INDENT {count=count+1;top=top+1;st[top]=count;return co;}
-REDENT {top=top-1;return cc;}
-[0-9]+ return num;
-TRUE return tru;
-FALSE return fals;
-"%" return mod;
-\".*\" return str;
-\.[a-zA-Z_]([a-zA-Z0-9_.])*|[a-zA-Z]([a-zA-Z0-9_.])* {insertIntoSym(yytext,yylineno,st[top]);return id;}
+\n	{printf("< NEW LINE, <=, %d >\n",yylineno);return nl;}
+print {printf("< PRINT, print, %d >\n",yylineno);return print;}
+while {printf("< WHILE, while, %d >\n",yylineno);return whl;}
+for {printf("< FOR, for, %d >\n",yylineno);return fr;}
+if {printf("< IF, if, %d >\n",yylineno);return f;}
+else {printf("< ELSE, else, %d >\n",yylineno);return els;}
+in {printf("< IN, in, %d >\n",yylineno);return in;}
+len {printf("< LEN, len, %d >\n",yylineno);return length;}
+"<=" {printf("< RELATIONAL OPERATOR, <=, %d >\n",yylineno);return LE;}
+">=" {printf("< RELATIONAL OPERATOR, >=, %d >\n",yylineno);return GE;}
+"==" {printf("< RELATIONAL OPERATOR, ==, %d >\n",yylineno);return EE;}
+"!=" {printf("< RELATIONAL OPERATOR, !=, %d >\n",yylineno);return NE;}
+"->" {printf("< RELATIONAL OPERATOR, ->, %d >\n",yylineno);return RA;}
+"<-" {printf("< RELATIONAL OPERATOR, <-, %d >\n",yylineno);return LA;}
+":" {printf("< RELATIONAL OPERATOR, :, %d >\n",yylineno);return colon;}
+range {printf("< RANGE, range, %d >\n",yylineno);return rangeo;}
+INDENT {printf("< INDENT, INDENT, %d >\n",yylineno);count=count+1;top=top+1;st[top]=count;return co;}
+REDENT {printf("< REDENT, REDENT, %d >\n",yylineno);top=top-1;return cc;}
+[0-9]+ {printf("< NUMBER, %s , %d >\n",yytext,yylineno);return num;}
+TRUE {printf("< BOOL, TRUE, %d >\n",yylineno);return tru;}
+FALSE {printf("< BOOL, FALSE, %d >\n",yylineno);return fals;}
+"%" {printf("< MOD OPERATOR, %%, %d >\n",yylineno);return mod;}
+\".*\" {printf("< CON CATENATION OPERATOR, ., %d >\n",yylineno);return str;}
+\.[a-zA-Z_]([a-zA-Z0-9_.])*|[a-zA-Z]([a-zA-Z0-9_.])* {printf("< VARIABLE, %s, %d >\n",yytext,yylineno);insertIntoSym(yytext,yylineno,st[top]);return id;}
 
 . {return yytext[0];}
 %%

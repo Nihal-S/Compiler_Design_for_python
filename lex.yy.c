@@ -826,122 +826,122 @@ case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
 #line 21 "code.l"
-{return nl;}
+{printf("< NEW LINE, <=, %d >\n",yylineno);return nl;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 22 "code.l"
-return print;
+{printf("< PRINT, print, %d >\n",yylineno);return print;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 23 "code.l"
-return whl;
+{printf("< WHILE, while, %d >\n",yylineno);return whl;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 24 "code.l"
-return fr;
+{printf("< FOR, for, %d >\n",yylineno);return fr;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 25 "code.l"
-return f;
+{printf("< IF, if, %d >\n",yylineno);return f;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 26 "code.l"
-return els;
+{printf("< ELSE, else, %d >\n",yylineno);return els;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 27 "code.l"
-return in;
+{printf("< IN, in, %d >\n",yylineno);return in;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 28 "code.l"
-return length;
+{printf("< LEN, len, %d >\n",yylineno);return length;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 29 "code.l"
-return LE;
+{printf("< RELATIONAL OPERATOR, <=, %d >\n",yylineno);return LE;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 30 "code.l"
-return GE;
+{printf("< RELATIONAL OPERATOR, >=, %d >\n",yylineno);return GE;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 31 "code.l"
-return EE;
+{printf("< RELATIONAL OPERATOR, ==, %d >\n",yylineno);return EE;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 32 "code.l"
-return NE;
+{printf("< RELATIONAL OPERATOR, !=, %d >\n",yylineno);return NE;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 33 "code.l"
-return RA;
+{printf("< RELATIONAL OPERATOR, ->, %d >\n",yylineno);return RA;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 34 "code.l"
-return LA;
+{printf("< RELATIONAL OPERATOR, <-, %d >\n",yylineno);return LA;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 35 "code.l"
-return colon;
+{printf("< RELATIONAL OPERATOR, :, %d >\n",yylineno);return colon;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 36 "code.l"
-return rangeo;
+{printf("< RANGE, range, %d >\n",yylineno);return rangeo;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 37 "code.l"
-{count=count+1;top=top+1;st[top]=count;return co;}
+{printf("< INDENT, INDENT, %d >\n",yylineno);count=count+1;top=top+1;st[top]=count;return co;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 38 "code.l"
-{top=top-1;return cc;}
+{printf("< REDENT, REDENT, %d >\n",yylineno);top=top-1;return cc;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 39 "code.l"
-return num;
+{printf("< NUMBER, %s , %d >\n",yytext,yylineno);return num;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 40 "code.l"
-return tru;
+{printf("< BOOL, TRUE, %d >\n",yylineno);return tru;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 41 "code.l"
-return fals;
+{printf("< BOOL, FALSE, %d >\n",yylineno);return fals;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 42 "code.l"
-return mod;
+{printf("< MOD OPERATOR, %%, %d >\n",yylineno);return mod;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 43 "code.l"
-return str;
+{printf("< CON CATENATION OPERATOR, ., %d >\n",yylineno);return str;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 44 "code.l"
-{insertIntoSym(yytext,yylineno,st[top]);return id;}
+{printf("< VARIABLE, %s, %d >\n",yytext,yylineno);insertIntoSym(yytext,yylineno,st[top]);return id;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
